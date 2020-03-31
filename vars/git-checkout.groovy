@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-// vars/checkoutcode.groovy
-def call() {
+
+def steps {
   echo "Checkout from"
 }
