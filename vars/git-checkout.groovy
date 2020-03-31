@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
 
-def steps {
+def call() {
   echo "Checkout from"
 }
