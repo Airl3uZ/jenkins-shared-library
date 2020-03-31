@@ -1,0 +1,27 @@
+pipeline {
+    agent {
+        docker {
+            image 'webdevops/php-nginx:latest'
+            registryUrl 'https://hub.docker.com/r/webdevops/php-nginx/'
+        }
+    }
+
+    stages {
+        stage('build docker') {
+            steps {
+                // sh 'cp -r /demo-php-ci/ /app'
+                sh "hostname"
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
