@@ -1,18 +1,15 @@
 #!/usr/bin/bash groovy
 def call() {
-    pipeline {
-        stage('Sonarqube') {
-            environment {
-                scannerHome = tool 'SonarQubeScanner'
-            }
-            steps {
-                withSonarQubeEnv('sonarqube') {
-                    sh "${scannerHome}/bin/sonar-scanner"
-                }
-                timeout(time: 10, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
-            }
+    environment {
+    scannerHome = tool 'SonarQubeScanner'
+    }
+    steps {
+        withSonarQubeEnv('T2P-SonarQube') {
+            sh "${sonar}/bin/sonar-scanner"
+        } // submitted SonarQube taskId is automatically attached to the pipeline context
+        timeout(time: 10, unit: 'MINUTES') {
+            waitForQualityGate abortPipeline: true
         }
     }
 }
+
