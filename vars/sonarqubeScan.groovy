@@ -1,9 +1,7 @@
 #!/usr/bin/bash groovy
-def call(Map sonar) { 
-    new workspace = get-env.WORKSPACE
-    new properties = ${workspace}'/'${sonar.file}
+def call(Map sonar) {
     withSonarQubeEnv('T2P-SonarQube') {
-        sh "${sonar.home}/bin/sonar-scanner -Dproject.settings=${properties}"
+        sh "${sonar.home}/bin/sonar-scanner -Dproject.settings=${sonar.properties}"
     } // submitted SonarQube taskId is automatically attached to the pipeline context
     timeout(time: 10, unit: 'MINUTES') {
         waitForQualityGate abortPipeline: true
