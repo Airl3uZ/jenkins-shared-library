@@ -1,6 +1,6 @@
 #!/usr/bin/bash groovy
 def call(Map sonar) { 
-    def sonar.workspace = manager.build.getEnvVars()["WORKSPACE"]
+    def sonar.workspace = get-env.WORKSPACE
     def sonar.properties = ${sonar.workspace}'/'${sonar.file}
     withSonarQubeEnv('T2P-SonarQube') {
         sh "${sonar.home}/bin/sonar-scanner -Dproject.settings=${sonar.properties}"
