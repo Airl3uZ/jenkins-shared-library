@@ -1,6 +1,6 @@
 #!/usr/bin/bash groovy
 def call(Map sonar) {
-    def env = System.getenv()
+    def env[] = System.getenv()
     String workspace = env.WORKSPACE
     sonar.projectFile = "${workspace}"+'/'+"${sonar.file}"
     withSonarQubeEnv('T2P-SonarQube') {
