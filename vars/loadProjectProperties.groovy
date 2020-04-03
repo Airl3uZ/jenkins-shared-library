@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 def call() {
-    def env[] = System.getenv()
-    String workspace = env.WORKSPACE
+    String workspace = pwd()
+    echo workspace
     properties = readProperties file: "${workspace}/project.properties"
 }
 return this;
