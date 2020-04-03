@@ -1,7 +1,26 @@
-#!/usr/bin/env groovy
-def call() {
-    String workspace = pwd()
-    echo workspace
-    properties = readProperties file: "${workspace}/project.properties"
+properties = null
+
+def loadProperties() {
+    node {
+        checkout scm
+        properties = readProperties file: 'pipeline.properties'
+        echo "Immediate one ${properties.repo}"
+    }
 }
-return this;
+
+pipeline {
+    agent none
+
+    stages {           
+        stage ('prepare') {
+            agent any
+
+            steps {
+                script {
+                    loadProperties()
+                    echo "Later one ${properties.ansible}"
+                }
+            }
+        }
+    }
+}
