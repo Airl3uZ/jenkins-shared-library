@@ -6,7 +6,7 @@ def call(Map stageParams) {
         branches: [[name:  stageParams.branch ]],
         userRemoteConfigs: [
             [ url: url ],
-            [credentialsId: 75aa10b1-d3c0-4675-818f-73b572b08684]
+            [credentialsId: stageParams.credentialsId]
         ]
     ])
 }
