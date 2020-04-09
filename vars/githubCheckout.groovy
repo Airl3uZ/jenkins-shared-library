@@ -5,6 +5,6 @@ def call(Map stageParams) {
         $class: 'GitSCM',
         branches: [[name:  stageParams.branch ]],
         extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: stageParams.path ]],
-        userRemoteConfigs: [[ url:  "https://github.com/"stageParams.user+"/"+stageParams.repo ]]
+        userRemoteConfigs: [[ url:  "https://github.com/"+stageParams.user+"/"+stageParams.repo ]]
     ])
 }
