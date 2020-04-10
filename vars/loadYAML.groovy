@@ -2,7 +2,6 @@
 // @grab(group='org.codehaus.groovy', module='groovy-all', version='2.5.11')
 // import groovy.grape.Grape
 // grape.grab(group='org.codehaus.groovy', module='groovy-all', version='2.5.11')
-import groovy.yaml.YamlBuilder
 import org.yaml.snakeyaml.Yaml
 import hudson.model.*
 def call(String file = 'ci/config.yml') {
