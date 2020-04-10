@@ -1,0 +1,15 @@
+config:
+  project_name: 'demo-php-ci'
+  sonar_config: 'sonar-demo-php-ci.properties'
+
+environment:
+  PROJECT_ENV: 'dev'
+  LANG: 'C.UTF-8'
+  GIT_SRV: 'https://github.com/Airl3uZ'
+  REPO: demo-php-ci
+  BRANCH: 'citest'
+  LOCALPATH: 'data/app'
+  SCM: 't2pgit'
+
+docker:
+  image: 'aaaaa'
