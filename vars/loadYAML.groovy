@@ -1,19 +1,10 @@
-// https://mvnrepository.com/artifact/org.yaml/snakeyaml
-import org.yaml.snakeyaml.*
-
-Yaml yaml = new Yaml()
-def configYaml = '''
-application: "Sample App"
-users:
-  name: "mrhaki"
-  likes: "Groovy"
-steps:
-  first: "WS1"
-  second:"WS2"
-'''
-def result = yaml.load(configYaml)
-result.application.each {
-    assert it.key == 'user' || it.key == 'steps'
+// @GrabResolver(name='restlet', root='http://maven.restlet.org/')
+// @grab(group='org.codehaus.groovy', module='groovy-all', version='2.5.11')
+// import groovy.grape.Grape
+// grape.grab(group='org.codehaus.groovy', module='groovy-all', version='2.5.11')
+// import groovy.yaml.YamlBuilder
+def call(String file = 'ci/config.yml') {
+    def parser = new Yaml()
+    def example = parser.load(file.text)
+    return example
 }
-
-println result.inspect()

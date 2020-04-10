@@ -6,8 +6,6 @@ import com.jenkins.*;
 def call(String yamlName) {
     def yaml = readYaml file: yamlName;
 
-    def buildNumber = Integer.parseInt(env.BUILD_ID)
-
     // load project's configuration
     ProjectConfiguration projectConfig = ConfigParser.parse(yaml, env);
 
