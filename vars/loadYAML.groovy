@@ -6,5 +6,5 @@
 def call(String file = 'ci/config.yml') {
     def parser = new Yaml()
     def example = parser.load(file.text)
-    return example
+    println example
 }
