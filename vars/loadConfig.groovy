@@ -1,6 +1,5 @@
 #!groovy
-def call(String yaml = "config.yml") {
-    Map cfg = readYaml(file: "${yaml}".config)
-    Map app_cfg = readYaml(file: "${yaml}".environment)
+def call(String yaml = "config.yml", String yamlName = 'config') {
+    Map cfg = readYaml(file: "${yaml}"."${yamlName}")
     return [cfg, app_cfg]
 }
