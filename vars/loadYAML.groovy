@@ -8,7 +8,6 @@ def call(String file = 'ci/config.yml') {
     // def parser = new Yaml()
     // def example = parser.load(file.text)
     // println example
-    sh "pwd"
     Yaml parser = new Yaml()
     servers=parser.load(("${file}" as File).text)
     println servers
