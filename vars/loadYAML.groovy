@@ -5,11 +5,17 @@
 import org.yaml.snakeyaml.Yaml
 import hudson.model.*
 def call(String file = 'ci/config.yml') {
+    def config = new File("${file}")
+node
+{
+    stage("Populating Environment")
+    {
     // def parser = new Yaml()
     // def example = parser.load(file.text)
     // println example
-    def config = new File("${file}")
     Yaml parser = new Yaml()
     servers=parser.load(("${config}" as File).text)
     println servers
+}
+    }
 }
