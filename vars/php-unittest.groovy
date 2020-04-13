@@ -1,14 +1,14 @@
 #!groovy
-// @Library('SharedLibrary')_
-// pipeline {
-//     agent {
-//         docker {
-//             args "-v ///${pwd}/data/app:/app:rw"
-//             image 'phpunit/phpunit:latest'
-//             reuseNode true
-//         }
-//     }
-//     stages {
+@Library('SharedLibrary')_
+pipeline {
+    agent {
+        docker {
+            args "-v ///${pwd}/data/app:/app:rw"
+            image 'phpunit/phpunit:latest'
+            reuseNode true
+        }
+    }
+    stages {
         stage('UnitTest') {
             agent {
                 docker {
@@ -32,7 +32,7 @@
                 }
             }
         }
-    // }
+    }
     post {
         success {
             notifyLine("Success")
@@ -44,4 +44,4 @@
             notifyLine("failure")
         }
     }
-// }
+}
