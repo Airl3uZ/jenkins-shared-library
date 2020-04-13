@@ -1,15 +1,22 @@
 #!groovy
-@Library('SharedLibrary')_
-pipeline {
-    agent {
-        docker {
-            args "-v ///${pwd}/data/app:/app:rw"
-            image 'phpunit/phpunit:latest'
-            reuseNode true
-        }
-    }
-    stages {
+// @Library('SharedLibrary')_
+// pipeline {
+//     agent {
+//         docker {
+//             args "-v ///${pwd}/data/app:/app:rw"
+//             image 'phpunit/phpunit:latest'
+//             reuseNode true
+//         }
+//     }
+//     stages {
         stage('UnitTest') {
+            agent {
+                docker {
+                    args "-v ///${pwd}/data/app:/app:rw"
+                    image 'phpunit/phpunit:latest'
+                    reuseNode true
+                }
+            }
             options {
                 timeout(time: 10, unit: "MINUTES")
             }
@@ -25,7 +32,7 @@ pipeline {
                 }
             }
         }
-    }
+    // }
     post {
         success {
             notifyLine("Success")
@@ -37,4 +44,4 @@ pipeline {
             notifyLine("failure")
         }
     }
-}
+// }
